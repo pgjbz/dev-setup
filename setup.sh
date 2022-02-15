@@ -10,12 +10,15 @@ info() {
     echo "INFO: $msg"
 }
 
+todo() {
+    echo "not implemented yet"
+    exit 1
+}
+
 getPackageManager() {
    declare -A osInfo;
     osInfo[/etc/redhat-release]=yum
     osInfo[/etc/arch-release]=pacman
-    osInfo[/etc/gentoo-release]=emerge
-    osInfo[/etc/SuSE-release]=zypp
     osInfo[/etc/debian_version]=apt-get
 
     for f in ${!osInfo[@]}
@@ -35,7 +38,7 @@ upgradeDebian() {
 
 installPackagesDebian() {
     local root_pass=$1
-    packs="wget curl git"
+    packs="wget curl git guake"
     echo $root_pass | sudo -S add-apt-repository ppa:git-core/ppa
 	upgradeDebian
 	echo "$root_password"|sudo -S apt install $packs -y
@@ -117,7 +120,7 @@ installDockerDebian() {
     installDockercompose
 }
 
-installDebian() {
+setupDebian() {
     local root_pass=$1
     installPackagesDebian $root_pass
     installCodeDebian $root_pass
@@ -159,13 +162,31 @@ installAsdf() {
     asdfInstallVersions
 }
 
+updateArch() {
+    todo
+    local root_pass=$1
+    echo $root_pass | sudo -S pacman -Syyu --noconfirm
+}
+
+installYay() {
+    todo
+}
+
+setupArch() {
+    todo
+    local root_pass=$1
+    packages="git wget curl"
+    echo $root_pass | sudo -S pacman -S $packages --noconfirm
+}
+
 run() {
     read -sp 'enter root password: ' root_password
     echo
     case $(getPackageManager) in
-        "apt-get") installDebian $root_password;;
+        "apt-get") setupDebian $root_password;;
+        "pacman") setupArch $root_password;;
         *) echo "unsupported distro"
-            exit;;
+            exit 1;;
     esac
 
     info "install dev tools"
