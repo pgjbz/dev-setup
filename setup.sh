@@ -91,18 +91,18 @@ installDockercompose() {
 installDockerDebian() {
     local root_pass=$1
     info "install docker"
-    containerdFile=containerd.io_1.2.13-2_amd64.deb
+    containerdFile=containerd.io_1.4.9-1_amd64.deb
     containerdFinalPath=$initial_path/$containerdFile
     containerdUrl=https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/$containerdFile
     wget $containerdUrl -O $containerdFinalPath 
 
     dockerCliFile=docker-ce-cli_20.10.9~3-0~ubuntu-focal_amd64.deb
     dockerCliFinalPath=$initial_path/$dockerCliFile
-    dockerCliUrl=https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/$docker-ce-cli_20.10.9~3-0~ubuntu-focal_amd64.deb
+    dockerCliUrl=https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/$dockerCliFile
     wget $dockerCliUrl -O $dockerCliFinalPath 
 
     dockerCeFile=docker-ce_20.10.9~3-0~ubuntu-focal_amd64.deb
-    dockerCeFinalPath=$initial_path/dockerCeFile
+    dockerCeFinalPath=$initial_path/$dockerCeFile
     dockerCeUrl=https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/$dockerCeFile
     wget $dockerCeUrl -O $dockerCeFinalPath 
 
