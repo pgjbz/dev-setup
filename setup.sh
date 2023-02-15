@@ -144,9 +144,8 @@ asdfInstallVersions() {
     asdf global nodejs lts
     asdf install maven 3.6.3
     asdf global maven 3.6.3
-    asdf install java adoptopenjdk-11.0.14+101
-    asdf install java adoptopenjdk-8.0.322+6
-    asdf global java adoptopenjdk-11.0.14+101
+    asdf install java openjdk-17.0.2
+    asdf global java openjdk-17.0.2
     echo ". ~/.asdf/plugins/java/set-java-home.bash" >> ~/.bashrc
 }
 
