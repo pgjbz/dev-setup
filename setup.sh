@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-vpn_installer="snx_install_linux30.sh"
 initial_path=$(pwd)
 code_deb="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 vscode_deb="vscode.deb"
